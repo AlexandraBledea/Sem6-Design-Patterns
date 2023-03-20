@@ -1,29 +1,57 @@
 package com.hotel.facade;
 
+import com.hotel.facade.Dishes.NonVeganMenu;
+import com.hotel.facade.Dishes.VeganMenu;
+import com.hotel.facade.Dishes.Ordered;
+import com.hotel.facade.Restaurants.NonVeganRestaurant;
+import com.hotel.facade.Restaurants.OrderedDishes;
+import com.hotel.facade.Restaurants.VeganRestaurant;
+import com.hotel.logger.Logger;
+import com.hotel.strategy.CreditCardStrategy;
+import com.hotel.strategy.PaymentStrategy;
+
 public class HotelKeeperImplementation implements HotelKeeper{
-    OrderedDishes o = new OrderedDishes();
+    private final VeganRestaurant veganRestaurant;
+    private final NonVeganRestaurant nonVeganRestaurant;
+    private final OrderedDishes orderedDishes;
+
+    private final Logger logger = Logger.getInstanceOf();
+
+    private PaymentStrategy paymentStrategy;
+
+    public HotelKeeperImplementation(){
+        veganRestaurant = new VeganRestaurant();
+        nonVeganRestaurant = new NonVeganRestaurant();
+        orderedDishes = new OrderedDishes();
+    }
 
     @Override
     public VeganMenu getVeganMenu() {
-        VeganRestaurant v = new VeganRestaurant();
-
-        return (VeganMenu) v.getMenus();
+        logger.log("Vegan Menu displayed");
+        return (VeganMenu) veganRestaurant.getDishes();
     }
 
     @Override
     public NonVeganMenu getNonVeganMenu() {
-        NonVeganRestaurant nv = new NonVeganRestaurant();
-
-        return (NonVeganMenu) nv.getMenus();
+        logger.log("Non Vegan Menu displayed ");
+        return (NonVeganMenu) nonVeganRestaurant.getDishes();
     }
 
-    @Override
-    public Bill getBill() {
-        return (Bill) o.getMenus();
+    public long getCheck() {
+        return orderedDishes.getCheck();
     }
 
-    public void orderDish(int number,){
+    public void orderDish(){
+        this.orderedDishes.addOrderedDish();
+    }
 
+    public void setPaymentStrategy(PaymentStrategy strategy){
+        this.paymentStrategy = strategy;
+    }
+
+    public void executePaymentStrategy(){
+        this.orderedDishes.pay();
+        this.paymentStrategy.pay(getCheck());
     }
 
 }

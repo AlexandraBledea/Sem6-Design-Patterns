@@ -2,5 +2,5 @@ package com.hotel.strategy;
 
 public interface PaymentStrategy {
 
-    public void pay(int amount);
+    public void pay(long amount);
 }
