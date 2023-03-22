@@ -1,4 +1,4 @@
-package com.hotel.logger;
+package com.hotel.singleton;
 
 import java.io.*;
 

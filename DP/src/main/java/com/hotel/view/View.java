@@ -21,6 +21,7 @@ public class View {
         this.addCommand(new OrderDishCommand("2", "Order Dish", keeper));
         this.addCommand(new GetCheckCommand("3", "Get Check", keeper));
         this.addCommand(new PayCheckCommand("4", "Pay Check", keeper));
+        this.addCommand(new ComposeMealCommand("5", "Compose meal", keeper));
     }
 
     public View() {

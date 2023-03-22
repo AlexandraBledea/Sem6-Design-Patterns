@@ -1,5 +1,8 @@
+HotelKeeperImplementation - Meal to be composed and ordered
 HotelKeeperImplementation - Dish order to be made
 HotelKeeperImplementation - Dish ordered
+HotelKeeperImplementation - Meal composed and ordered
+HotelKeeperImplementation - Check returned
 HotelKeeperImplementation - Dish order to be made
 HotelKeeperImplementation - Dish ordered
 HotelKeeperImplementation - Check returned

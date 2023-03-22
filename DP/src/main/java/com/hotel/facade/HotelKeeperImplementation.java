@@ -2,12 +2,11 @@ package com.hotel.facade;
 
 import com.hotel.facade.Dishes.NonVeganMenu;
 import com.hotel.facade.Dishes.VeganMenu;
-import com.hotel.facade.Dishes.Ordered;
 import com.hotel.facade.Restaurants.NonVeganRestaurant;
 import com.hotel.facade.Restaurants.OrderedDishes;
 import com.hotel.facade.Restaurants.VeganRestaurant;
-import com.hotel.logger.Logger;
-import com.hotel.strategy.CreditCardStrategy;
+import com.hotel.singleton.Logger;
+import com.hotel.strategy.Context;
 import com.hotel.strategy.PaymentStrategy;
 
 public class HotelKeeperImplementation implements HotelKeeper{
@@ -15,7 +14,8 @@ public class HotelKeeperImplementation implements HotelKeeper{
     private final NonVeganRestaurant nonVeganRestaurant;
     private final OrderedDishes orderedDishes;
     private final Logger logger = Logger.getInstanceOf();
-    private PaymentStrategy paymentStrategy;
+
+    private Context context;
 
     public HotelKeeperImplementation(){
         veganRestaurant = new VeganRestaurant();
@@ -48,15 +48,22 @@ public class HotelKeeperImplementation implements HotelKeeper{
 
     public void setPaymentStrategy(PaymentStrategy strategy){
         logger.log("HotelKeeperImplementation - payment method to be set");
-        this.paymentStrategy = strategy;
+        this.context = new Context(strategy);
         logger.log("HotelKeeperImplementation - payment method set");
     }
 
     public void executePaymentStrategy(){
         logger.log("HotelKeeperImplementation - payment to be done");
-        this.paymentStrategy.pay(getCheck());
+        this.context.pay(getCheck());
         this.orderedDishes.pay();
         logger.log("HotelKeeperImplementation - payment made");
+    }
+
+    public void composeMeal(String firstComponent, String secondComponent, String saladComponent, String toppingComponent){
+        logger.log("HotelKeeperImplementation - Meal to be composed and ordered");
+        this.orderedDishes.composeMeal(firstComponent, secondComponent, saladComponent, toppingComponent);
+        this.orderDish();
+        logger.log("HotelKeeperImplementation - Meal composed and ordered");
     }
 
 }
