@@ -14,9 +14,7 @@ public class HotelKeeperImplementation implements HotelKeeper{
     private final VeganRestaurant veganRestaurant;
     private final NonVeganRestaurant nonVeganRestaurant;
     private final OrderedDishes orderedDishes;
-
     private final Logger logger = Logger.getInstanceOf();
-
     private PaymentStrategy paymentStrategy;
 
     public HotelKeeperImplementation(){
@@ -27,31 +25,38 @@ public class HotelKeeperImplementation implements HotelKeeper{
 
     @Override
     public VeganMenu getVeganMenu() {
-        logger.log("Vegan Menu displayed");
+        logger.log("HotelKeeperImplementation - Vegan Menu displayed");
         return (VeganMenu) veganRestaurant.getDishes();
     }
 
     @Override
     public NonVeganMenu getNonVeganMenu() {
-        logger.log("Non Vegan Menu displayed ");
+        logger.log("HotelKeeperImplementation - Non Vegan Menu displayed ");
         return (NonVeganMenu) nonVeganRestaurant.getDishes();
     }
 
     public long getCheck() {
+        logger.log("HotelKeeperImplementation - Check returned");
         return orderedDishes.getCheck();
     }
 
     public void orderDish(){
+        logger.log("HotelKeeperImplementation - Dish order to be made");
         this.orderedDishes.addOrderedDish();
+        logger.log("HotelKeeperImplementation - Dish ordered");
     }
 
     public void setPaymentStrategy(PaymentStrategy strategy){
+        logger.log("HotelKeeperImplementation - payment method to be set");
         this.paymentStrategy = strategy;
+        logger.log("HotelKeeperImplementation - payment method set");
     }
 
     public void executePaymentStrategy(){
-        this.orderedDishes.pay();
+        logger.log("HotelKeeperImplementation - payment to be done");
         this.paymentStrategy.pay(getCheck());
+        this.orderedDishes.pay();
+        logger.log("HotelKeeperImplementation - payment made");
     }
 
 }

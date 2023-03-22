@@ -16,6 +16,6 @@ public class CreditCardStrategy implements PaymentStrategy{
 
     @Override
     public void pay(long amount) {
-        System.out.println(amount + " paid with credit/debit card");
+        System.out.println(amount + "$ paid with credit/debit card");
     }
 }

@@ -12,6 +12,6 @@ public class PaypalStrategy implements PaymentStrategy{
 
     @Override
     public void pay(long amount) {
-        System.out.println(amount + " paid using Paypal.");
+        System.out.println(amount + "$ paid using Paypal.");
     }
 }

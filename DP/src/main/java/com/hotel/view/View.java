@@ -1,7 +1,8 @@
 package com.hotel.view;
 
-import com.hotel.view.command.Command;
-import com.hotel.view.command.GetMenuCommand;
+import com.hotel.facade.HotelKeeperImplementation;
+import com.hotel.facade.Restaurants.Hotel;
+import com.hotel.view.command.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,16 +10,21 @@ import java.util.Scanner;
 
 public class View {
     private Map<String, Command> commands = new HashMap<>();
+    private HotelKeeperImplementation keeper;
 
     private void addCommand(Command c) {
         this.commands.put(c.getKey(), c);
     }
 
     private void fillCommandsMap() {
-        this.addCommand(new GetMenuCommand("1", "Get Menu"));
+        this.addCommand(new GetMenuCommand("1", "Get Menu", keeper));
+        this.addCommand(new OrderDishCommand("2", "Order Dish", keeper));
+        this.addCommand(new GetCheckCommand("3", "Get Check", keeper));
+        this.addCommand(new PayCheckCommand("4", "Pay Check", keeper));
     }
 
     public View() {
+        this.keeper = new HotelKeeperImplementation();
         this.fillCommandsMap();
     }
 
@@ -26,16 +32,6 @@ public class View {
         for(var command: this.commands.values()){
             System.out.println(command.getKey() + " " + command.getDescription());
         }
-//        commands.values().stream()
-//                .sorted((com1, com2) -> {
-//                    Integer aux = Integer.parseInt(com1.getKey());
-//                    return aux.compareTo(Integer.parseInt(com2.getKey()));
-//                })
-//                .forEach((com) -> {
-//                    String line = String.format("%3s : %s", com.getKey(), com.getDescription());
-//                    System.out.println(line);
-//                });
-
     }
 
     public void run() {

@@ -17,7 +17,7 @@ public class Logger {
 
     private void initOS(){
         try{
-            os = new FileOutputStream("C:\\Users\\night\\Desktop\\Facultate An 3\\Semestru 2\\Design Patterns\\Sem6-Design-Patterns\\DP\\src\\main\\java\\com\\hotel\\logger\\session_logger.txt");
+            os = new FileOutputStream("log\\session_logger.txt");
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
