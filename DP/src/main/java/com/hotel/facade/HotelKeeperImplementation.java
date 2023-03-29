@@ -14,7 +14,6 @@ public class HotelKeeperImplementation implements HotelKeeper{
     private final NonVeganRestaurant nonVeganRestaurant;
     private final OrderedDishes orderedDishes;
     private final Logger logger = Logger.getInstanceOf();
-
     private Context context;
 
     public HotelKeeperImplementation(){

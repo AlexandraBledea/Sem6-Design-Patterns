@@ -1,8 +1,4 @@
-HotelKeeperImplementation - Meal to be composed and ordered
-HotelKeeperImplementation - Dish order to be made
-HotelKeeperImplementation - Dish ordered
-HotelKeeperImplementation - Meal composed and ordered
-HotelKeeperImplementation - Check returned
+HotelKeeperImplementation - Vegan Menu displayed
 HotelKeeperImplementation - Dish order to be made
 HotelKeeperImplementation - Dish ordered
 HotelKeeperImplementation - Check returned
@@ -11,3 +7,8 @@ HotelKeeperImplementation - payment method set
 HotelKeeperImplementation - payment to be done
 HotelKeeperImplementation - Check returned
 HotelKeeperImplementation - payment made
+HotelKeeperImplementation - Check returned
+HotelKeeperImplementation - Meal to be composed and ordered
+HotelKeeperImplementation - Dish order to be made
+HotelKeeperImplementation - Dish ordered
+HotelKeeperImplementation - Meal composed and ordered
