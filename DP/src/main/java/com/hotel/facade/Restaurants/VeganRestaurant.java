@@ -16,7 +16,7 @@ public class VeganRestaurant implements Hotel {
         return new VeganMenu(dishList);
     }
 
-    public void initializeMenu(){
+    private void initializeMenu(){
         this.dishList.add(new Dish("Falafel", "150kcal/100g", 20, 150));
         this.dishList.add(new Dish("Unfished fish", "204kcal/100g", 20, 200));
         this.dishList.add(new Dish("Potato chips", "200kcal/100g", 20, 300));
