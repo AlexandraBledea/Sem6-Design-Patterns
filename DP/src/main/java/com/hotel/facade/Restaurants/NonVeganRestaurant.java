@@ -9,7 +9,7 @@ import java.util.List;
 
 public class NonVeganRestaurant implements Hotel {
 
-    public List<Dish> dishList = new ArrayList<>();
+    List<Dish> dishList = new ArrayList<>();
 
     public Dishes getDishes(){
         initializeMenu();
